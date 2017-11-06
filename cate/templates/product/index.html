@@ -1,24 +1,12 @@
+
+{% extends 'common/base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>about</title>
 
-    <link rel="stylesheet" href="../../../pro2/default.css">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
-<meta name="format-detection" content="telephone=no">
-<meta name="renderer" content="webkit">
-<meta name="author" content="www.cssmoban.com" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
+{% block title %}
+    <title>美食之家</title>
+{% endblock title %}
 
-
-    {% include 'common/header.html' %}
-
+{% block main %}
 <main class="main-first-bgcolor">
     <div>
         <div class="main-head">
@@ -77,30 +65,18 @@
         <li><a href="#">饮料</a></li>
     </ul>
     <ul class="main-submenu-info main-submenu-first">
+        {% for prod in prod_list %}
         <li><a href="#">
             <div class="food-name">
-                <p>玫瑰香酥西兰花</p>
-                <p>Rose fried broccoli</p>
+                <p>{{ prod.zh_name }}</p>
+                <p>{{ prod.en_name }}</p>
             </div>
             <div class="food-price">
-                <p>￥<span>25</span></p>
+                <p>￥<span>{{ prod.price }}</span></p>
             </div>
             <div class="img-bg"></div>
-            <img src="images/foodlist1.jpg"></a></li>
-        <li><a href="#">
-            <div class="food-name">
-                <p>玫瑰香酥西兰花</p>
-                <p>Rose fried broccoli</p>
-            </div>
-            <div class="food-price">
-                <p>￥<span>25</span></p>
-            </div>
-            <div class="img-bg"></div>
-            <img src="images/foodlist2.jpg"></a></li>
-        <li><a href="#"><img src="images/foodlist3.jpg"></a></li>
-        <li><a href="#"><img src="images/foodlist4.jpg"></a></li>
-        <li><a href="#"><img src="images/foodlist5.jpg"></a></li>
-        <li><a href="#"><img src="images/foodlist6.jpg"></a></li>
+            <img src="{% static prod.image %}"></a></li>
+        {% endfor %}
     </ul>
     <a class="more" href="#">MORE</a>
 </main>
@@ -190,10 +166,5 @@
             </form>
         </div>
 </main>
+{% endblock main %}
 
-{% include 'common/footer.html' %}
-
-</body>
-
-
-</html>

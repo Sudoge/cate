@@ -1,21 +1,10 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>美食城网站模板-模板之家cssmoban.com</title>
-    <link rel="stylesheet" href="../../../pro2/default.css">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
-<meta name="format-detection" content="telephone=no">
-<meta name="renderer" content="webkit">
-<meta name="author" content="www.cssmoban.com" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" href="{% static 'default.css' %}">
 
+{% extends 'common/base.html' %}
+
+{% block title %}
+    <title>关于</title>
+{% endblock title %}
+{% block head_css %}
     <style type="text/css">
         html, body {
             margin: 0;
@@ -40,13 +29,12 @@
         }
 
     </style>
+{% endblock head_css %}
+{% block head_js %}
     <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+{% endblock head_js %}
 
-</head>
-<body>
-
-{% include 'common/header.html' %}
-
+{% block main %}
 <main>
     <div class="main-head">
         <p><span>关于我们</span></p>
@@ -195,10 +183,10 @@
 
 </main>
 
+{% endblock main %}
 
-{% include 'common/footer.html' %}
 
-</body>
+{% block foot_js %}
 
 <script type="text/javascript">
     //创建和初始化地图函数：
@@ -303,7 +291,4 @@
     initMap();//创建和初始化地图
 </script>
 
-<script src="lib/jquery/jquery.js"></script>
-<script src="lib/bootstrap/bootstrap.js"></script>
-<script src="js/main.js"></script>
-</html>
+{% endblock foot_js %}

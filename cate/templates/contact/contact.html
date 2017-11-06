@@ -1,0 +1,58 @@
+{% extends 'common/base.html' %}
+
+
+{% block title %}
+    <title>预定</title>
+{% endblock title %}
+
+
+
+{% block main %}
+
+<main>
+
+    <div class="main-head">
+        <p><span>在线预定</span></p>
+    </div>
+    <div class="main-reserve">
+        <form action="#" method="post" id="food-reserve">
+            <ul>
+                <li>
+                    <label for="username">姓名</label>
+                    <input type="text" name="username" id="username">
+                </li>
+                <li>
+                    <label for="phonenumber">电话号码</label>
+                    <input type="text" name="phonenumber" id="phonenumber">
+                </li>
+                <li>
+                    <label for="email">电子邮件</label>
+                    <input type="text" name="email" id="email">
+                </li>
+                <li>
+                    <label for="time">时间</label>
+                    <input type="text" name="time" id="time">
+                </li>
+                <li>
+                    <label for="numberofpeople">人数</label>
+                    <input type="text" name="numberofpeople" id="numberofpeople">
+                </li>
+                <li>
+                    <label for="date">日期</label>
+                    <input type="text" name="date" id="date">
+                </li>
+                <li>
+                    <label for="guestbook">留言</label>
+                    <input type="text" name="guestbook" id="guestbook">
+                </li>
+            </ul>
+            <a class="reserve">预定</a>
+
+        </form>
+    </div>
+
+
+
+</main>
+
+{% endblock main %}
