@@ -16,13 +16,13 @@
         </div>
         <div class="main-we-provide">
             <ul>
-                <li><span><img src="images/lunch.png" alt=""></span>
+                <li><span><img src="{% static 'images/lunch.png' %}" alt=""></span>
                     <h2>中餐</h2>
                     <p>公司目前经营的范围包括：电子商务平台开发技术支持、技术转让、运维技术服务大数据、云计算等。</p></li>
-                <li><span><img src="images/dinner.png" alt=""></span>
+                <li><span><img src="{% static 'images/dinner.png' %}" alt=""></span>
                     <h2>晚餐</h2>
                     <p>公司目前经营的范围包括：电子商务平台开发技术支持、技术转让、运维技术服务大数据、云计算等。</p></li>
-                <li><span><img src="images/coffee.png" alt=""></span>
+                <li><span><img src="{% static 'images/coffee.png' %}" alt=""></span>
                     <h2>甜品/咖啡</h2>
                     <p>公司目前经营的范围包括：电子商务平台开发技术支持、技术转让、运维技术服务大数据、云计算等。</p></li>
             </ul>
@@ -39,21 +39,16 @@
 </main>
 <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
 <main>
-    <img class="mdbanner" src="images/mdbanner.jpg">
+    <img class="mdbanner" src="{% static 'images/mdbanner.jpg' %}">
 </main>
 <main>
     <div class="main-body">
         <p><span>每一种食物来源都经过我们的精挑细选，关于食材我们只选最天然、健康、优质的，只为一份对极致美味的追求，用心做好每一份菜，是我们不变的宗旨。</span></p>
         <ul class="main-body-img">
-            <li><img src="images/mdlist1.jpg"></li>
-            <li><img src="images/mdlist2.jpg"></li>
-            <li><img src="images/mdlist3.jpg"></li>
-            <li><img src="images/mdlist4.jpg"></li>
-            <li><img src="images/mdlist5.jpg"></li>
-            <li><img src="images/mdlist6.jpg"></li>
-            <li><img src="images/mdlist7.jpg"></li>
-            <li><img src="images/mdlist8.jpg"></li>
-            <li><img src="images/mdlist9.jpg"></li>
+
+            {% for prod in higher_rate_list %}
+            <li><img src="{% static prod.image %}"></li>
+            {% endfor %}
         </ul>
     </div>
 </main>
@@ -65,7 +60,8 @@
         <li><a href="#">饮料</a></li>
     </ul>
     <ul class="main-submenu-info main-submenu-first">
-        {% for prod in prod_list %}
+
+        {% for prod in new_list %}
         <li><a href="#">
             <div class="food-name">
                 <p>{{ prod.zh_name }}</p>
@@ -77,8 +73,9 @@
             <div class="img-bg"></div>
             <img src="{% static prod.image %}"></a></li>
         {% endfor %}
+
     </ul>
-    <a class="more" href="#">MORE</a>
+    <a class="more" href="{% url 'product:product_list' %}#prod_list">MORE</a>
 </main>
 <main>
     <div>

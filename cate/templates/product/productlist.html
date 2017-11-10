@@ -1,6 +1,7 @@
 
 {% extends 'common/base.html' %}
 {% load staticfiles %}
+{% load prod_filters %}
 
 {% block title %}
     <title>美食之家产品列表</title>
@@ -18,21 +19,16 @@
     </div>
 </main>
 <main>
-    <img class="mdbanner" src="images/mdbanner.jpg">
+    <img class="mdbanner" src="{% static 'images/mdbanner.jpg' %}">
 </main>
 <main>
     <div class="main-body">
         <p><span>每一种食物来源都经过我们的精挑细选，关于食材我们只选最天然、健康、优质的，只为一份对极致美味的追求，用心做好每一份菜，是我们不变的宗旨。</span></p>
         <ul class="main-body-img">
-            <li><img src="images/mdlist1.jpg"></li>
-            <li><img src="images/mdlist2.jpg"></li>
-            <li><img src="images/mdlist3.jpg"></li>
-            <li><img src="images/mdlist4.jpg"></li>
-            <li><img src="images/mdlist5.jpg"></li>
-            <li><img src="images/mdlist6.jpg"></li>
-            <li><img src="images/mdlist7.jpg"></li>
-            <li><img src="images/mdlist8.jpg"></li>
-            <li><img src="images/mdlist9.jpg"></li>
+            {% for prod in higher_rate_list %}
+            <li><img src="{% static prod.image %}"></li>
+            {% endfor %}
+
         </ul>
     </div>
 </main>
@@ -43,6 +39,7 @@
         <li><a href="#">甜品</a></li>
         <li><a href="#">饮料</a></li>
     </ul>
+    <a name="prod_list"></a>
     <ul class="main-submenu-info main-submenu-first">
         {% for prod in page.object_list %}
         <li><a href="#">
@@ -56,19 +53,34 @@
             <div class="img-bg"></div>
             <img src="{% static prod.image %}"></a></li>
         {% endfor %}
+
     </ul>
     <nav aria-label="Page navigation">
         <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            {% if page.has_previous %}
             <li>
-                <a href="#" aria-label="Next">
+                <a href="{% url 'product:product_list' %}?page={{ page.previous_page_number }}#prod_list" aria-label="Next">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% for num in page.number|get_num_list:paginator.num_pages %}
+                {% if num == page.number %}
+                    <li><a href="{% url 'product:product_list' %}?page={{ num }}#prod_list" style="background-color:lightcoral">{{ num }}</a></li>
+                    {% else %}
+                    <li><a href="{% url 'product:product_list' %}?page={{ num }}#prod_list">{{ num }}</a></li>
+                {% endif %}
+
+            {% endfor %}
+
+            {% if page.has_next %}
+            <li>
+                <a href="{% url 'product:product_list' %}?page={{ page.next_page_number }}#prod_list" aria-label="Next">
                     <span aria-hidden="true">下一页</span>
                 </a>
             </li>
+            {% endif %}
         </ul>
     </nav>
 </main>

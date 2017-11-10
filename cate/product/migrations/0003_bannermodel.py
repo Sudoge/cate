@@ -7,24 +7,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('product', '0002_auto_20171109_1239'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProductModel',
+            name='BannerModel',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('create_time', models.DateTimeField(auto_now_add=True)),
                 ('update_time', models.DateTimeField(auto_now=True)),
                 ('is_delete', models.BooleanField(default=False)),
-                ('zh_name', models.CharField(max_length=30)),
-                ('en_name', models.CharField(max_length=30, null=True)),
-                ('image', models.ImageField(upload_to='')),
-                ('price', models.IntegerField()),
-                ('click_rate', models.IntegerField()),
+                ('ad_name', models.CharField(max_length=30)),
+                ('ad_image', models.ImageField(upload_to='')),
             ],
             options={
-                'db_table': 'product',
+                'db_table': 'banner',
             },
         ),
     ]

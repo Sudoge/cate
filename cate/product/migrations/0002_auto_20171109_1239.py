@@ -11,8 +11,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelTable(
-            name='productmodel',
-            table='product',
+        migrations.AlterField(
+            model_name='productmodel',
+            name='click_rate',
+            field=models.IntegerField(default=0),
         ),
     ]
